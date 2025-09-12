@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const { i18n } = useTranslation();
   const normalLink = " lg:text-lg lg:mr-2 mt-2 lg:mt-0";
   const activeLink = `bg-gradient-to-r from-[var(--color-rhprimary)] to-[var(--color-rhsecondary)] border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
 
@@ -9,7 +11,7 @@ const Navbar = () => {
     window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
-
+      
   const getInitialConfig = () => {
     const saved = localStorage.getItem("pageConfig");
     if (saved) return JSON.parse(saved);
@@ -24,8 +26,9 @@ const Navbar = () => {
   useEffect(() => {
     document.querySelector("html").setAttribute("data-theme", pageConfig.theme);
     document.querySelector("html").className = pageConfig.theme;
+    i18n.changeLanguage(pageConfig.language);
     localStorage.setItem("pageConfig", JSON.stringify(pageConfig));
-  }, [pageConfig]);
+  }, [pageConfig, i18n]);
 
   const handleTheme = (e) => {
     setPageConfig((prev) => ({
@@ -34,8 +37,28 @@ const Navbar = () => {
     }));
   };
 
+  const handleLanguageChange = (lng) => {
+    setPageConfig((prev) => ({
+      ...prev,
+      language: lng, 
+    }));
+  };
+
   return (
     <div className="navbar bg-base-300  shadow-sm">
+      <button
+        className="btn btn-soft btn-secondary"
+        onClick={() => handleLanguageChange("en")}
+      >
+        English
+      </button>
+      <button
+        className="btn btn-soft btn-accent"
+        onClick={() => handleLanguageChange("bn")}
+      >
+        বাংলা
+      </button>
+
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
