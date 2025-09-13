@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/Red-hope-logo.png";
 
 const Navbar = () => {
   const { i18n } = useTranslation();
@@ -11,7 +12,7 @@ const Navbar = () => {
     window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
-      
+
   const getInitialConfig = () => {
     const saved = localStorage.getItem("pageConfig");
     if (saved) return JSON.parse(saved);
@@ -40,7 +41,7 @@ const Navbar = () => {
   const handleLanguageChange = (lng) => {
     setPageConfig((prev) => ({
       ...prev,
-      language: lng, 
+      language: lng,
     }));
   };
 
@@ -124,7 +125,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Red Hope</a>
+        <a href="/" className="">
+          <img src={logo} alt="Red_hope_logo" className="w-60" />
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
