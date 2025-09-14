@@ -1,0 +1,4 @@
+14-09-25 (two new npm package)
+  1. firebase (npm install firebase)
+  2. props type (npm install prop-types)
+  3. you may need env file (collect from ne)

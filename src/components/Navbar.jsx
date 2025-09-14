@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/Red-hope-logo.png";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  
   const { i18n } = useTranslation();
   const normalLink = " lg:text-lg lg:mr-2 mt-2 lg:mt-0";
   const activeLink = `bg-gradient-to-r from-[var(--color-rhprimary)] to-[var(--color-rhsecondary)] border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
@@ -47,19 +49,6 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-300  shadow-sm">
-      <button
-        className="btn btn-soft btn-secondary"
-        onClick={() => handleLanguageChange("en")}
-      >
-        English
-      </button>
-      <button
-        className="btn btn-soft btn-accent"
-        onClick={() => handleLanguageChange("bn")}
-      >
-        বাংলা
-      </button>
-
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -166,6 +155,20 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end flex gap-2 justify-center items-center">
+        <select
+          onChange={(e) => handleLanguageChange(e.target.value)}
+          defaultValue={pageConfig.language}
+          name="language"
+          id="language"
+          className="mr-4  rounded-md border border-gray-300 bg-white dark:bg-[#15191E] px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+        >
+          <option disabled>
+            Select a language
+          </option>
+          <option value="en">English</option>
+          <option value="bn">বাংলা</option>
+        </select>
+
         <label className="swap swap-rotate">
           <input
             checked={pageConfig.theme === "dark"}
