@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import AboutUs from "../pages/AboutUs";
 import FindBlood from "../pages/FindBlood";
 import BecomeDonar from "../pages/BecomeDonar";
+import SignUpPage from "../pages/SignUpPage";
+import LoginPage from "../pages/LoginPage";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ export const router = createBrowserRouter([
       {
         path: "/become_donar",
         element: <BecomeDonar/>,
+      },
+      {
+        path: "/signup",
+        element: <SignUpPage/>,
+      },
+      {
+        path: "/login",
+        element: <LoginPage/>,
       },
     ],
   },
