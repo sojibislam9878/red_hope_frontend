@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import useAuth from "../hooks/useAuth";
 
 const Banner = () => {
-  const {googleSignUP} = useAuth()
   const { t } = useTranslation();
   return (
     <section>
@@ -17,7 +16,6 @@ const Banner = () => {
           </p>
           <div className="flex flex-wrap justify-center">
             <button
-              onClick={googleSignUP}
               type="button"
               className="px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-gray-100 dark:text-gray-900"
             >
