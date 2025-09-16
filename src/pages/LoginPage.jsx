@@ -4,17 +4,24 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
 
 const LoginPage = () => {
-  const { googleSignUP } = useAuth()
+  const { googleSignUP, facebookSingUP, setUserData } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Login Data:", data);
+  const onSubmit = async (data) => {
+    try {
+      const res = await axios.post("http://localhost:3000/login", data);
+      console.log(res.data);
+      setUserData(res?.data.user)
+    } catch (err) {
+      console.log(err.response?.data || "Login failed");
+    }
   };
 
   return (
@@ -105,6 +112,7 @@ const LoginPage = () => {
             <FcGoogle size={20} /> Google
           </button>
           <button
+            onClick={facebookSingUP}
             type="button"
             className="flex items-center justify-center gap-2 flex-1 bg-blue-600 text-white rounded-xl py-3 hover:bg-blue-700 transition"
           >
