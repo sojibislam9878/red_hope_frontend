@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const SignUpPage = () => {
-  const { googleSignUP } = useAuth();
+  const { googleSignUP,facebookSingUP } = useAuth();
   const {
     register,
     handleSubmit,
@@ -201,6 +201,7 @@ const SignUpPage = () => {
             <FcGoogle size={20} /> Google
           </button>
           <button
+            onClick={facebookSingUP}
             type="button"
             className="flex items-center justify-center gap-2 flex-1 bg-blue-600 text-white rounded-xl py-3 hover:bg-blue-700 transition"
           >
