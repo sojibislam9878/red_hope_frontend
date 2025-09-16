@@ -4,23 +4,69 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
 
 const SignUpPage = () => {
-  const { googleSignUP } = useAuth();
+  const { googleSignUP, facebookSingUP, setUserData } = useAuth();
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
-  const [preview, setPreview] = useState(null);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [preview, setPreview] = useState(null);
+  const [photoFile, setPhotoFile] = useState(null);
+
+  const password = watch("password");
+
+  const onSubmit = async (data) => {
+    try {
+      let imageUrl = null;
+      if (photoFile) {
+        const formData = new FormData();
+        formData.append("image", photoFile);
+
+        const res = await fetch(
+          `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBBAPIKYE}`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+        const result = await res.json();
+
+        if (result.success) {
+          imageUrl = result.data.url;
+        } else {
+          console.error("Image upload failed:", result);
+        }
+      }
+
+      const signUpUserData = {
+        ...data,
+        photo: imageUrl,
+        phone: data.countryCode + data.phone,
+      };
+
+      try {
+        const res = await axios.post(
+          "http://localhost:3000/signup",
+          signUpUserData
+        );
+        setUserData(res?.data.user);
+      } catch (err) {
+        console.log(err.response?.data || "Signup failed");
+      }
+    } catch (error) {
+      console.error("Error in signup:", error);
+    }
   };
 
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      setPhotoFile(file);
       setPreview(URL.createObjectURL(file));
     }
   };
@@ -33,7 +79,7 @@ const SignUpPage = () => {
     >
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white/90 dark:bg-gray-900/80 backdrop-blur-md shadow-2xl rounded-2xl p-8 w-full max-w-lg space-y-5"
+        className="bg-white/90 dark:bg-gray-900/80 backdrop-blur-md shadow-2xl rounded-2xl p-8 w-full max-w-lg my-3"
       >
         <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
           Create an Account
@@ -90,6 +136,56 @@ const SignUpPage = () => {
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
+        </div>
+
+        {/* Password */}
+        <div>
+          <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+            Password
+          </label>
+          <input
+            type="password"
+            placeholder="******"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "At least 6 characters required",
+              },
+              validate: {
+                hasUpper: (value) =>
+                  /[A-Z]/.test(value) || "Must include an uppercase letter",
+                hasLower: (value) =>
+                  /[a-z]/.test(value) || "Must include a lowercase letter",
+                hasNumber: (value) =>
+                  /\d/.test(value) || "Must include a number",
+              },
+            })}
+            className="w-full mt-1 p-3 border border-gray-300 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-400 outline-none"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password.message}</p>
+          )}
+        </div>
+
+        {/* Confirm Password */}
+        <div>
+          <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            placeholder="******"
+            {...register("conPassword", {
+              required: "confirm password is required",
+              validate: (value) =>
+                value === password || "Passwords do not match",
+            })}
+            className="w-full mt-1 p-3 border border-gray-300 dark:border-gray-700 rounded-xl shadow-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-400 outline-none"
+          />
+          {errors.conPassword && (
+            <p className="text-red-500 text-sm">{errors.conPassword.message}</p>
           )}
         </div>
 
@@ -201,6 +297,7 @@ const SignUpPage = () => {
             <FcGoogle size={20} /> Google
           </button>
           <button
+            onClick={facebookSingUP}
             type="button"
             className="flex items-center justify-center gap-2 flex-1 bg-blue-600 text-white rounded-xl py-3 hover:bg-blue-700 transition"
           >
