@@ -2,3 +2,7 @@
   1. firebase (npm install firebase)
   2. props type (npm install prop-types)
   3. you may need env file (collect from ne)
+
+15-09-25
+  1. lucide react (npm install lucide-react)
+  2. react hook form (npm install react-hook-form)
