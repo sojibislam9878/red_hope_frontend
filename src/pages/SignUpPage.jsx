@@ -28,7 +28,9 @@ const SignUpPage = () => {
         formData.append("image", photoFile);
 
         const res = await fetch(
-          `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBBAPIKYE}`,
+          `https://api.imgbb.com/1/upload?key=${
+            import.meta.env.VITE_IMGBBAPIKYE
+          }`,
           {
             method: "POST",
             body: formData,
