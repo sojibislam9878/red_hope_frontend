@@ -1,14 +1,20 @@
 import { createContext, useEffect, useState } from "react";
-import { FacebookAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 import { auth } from "../firebase/FirebaseConfiq";
 import axios from "axios";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
-  const [userData, setUserData]=useState(null)
-  const [logedInUser, setLogedInUser] = useState(null)
+  const [userData, setUserData] = useState(null);
+  const [logedInUser, setLogedInUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(false);
-  
+
   useEffect(() => {
     const signupUser = async () => {
       if (logedInUser) {
@@ -21,7 +27,7 @@ const AuthProvider = ({ children }) => {
           provider: logedInUser?.providerData[0]?.providerId,
           terms: true,
         };
-        
+
         try {
           const res = await axios.post(
             "http://localhost:3000/social-login",
@@ -35,17 +41,17 @@ const AuthProvider = ({ children }) => {
     };
 
     signupUser();
-  }, [logedInUser]); 
-  
+  }, [logedInUser]);
+
   const googleProvider = new GoogleAuthProvider();
   const googleSignUP = () => {
     signInWithPopup(auth, googleProvider);
   };
 
-  const facebookProvider = new FacebookAuthProvider()
+  const facebookProvider = new FacebookAuthProvider();
   const facebookSingUP = () => {
-    signInWithPopup(auth, facebookProvider)
-  }
+    signInWithPopup(auth, facebookProvider);
+  };
 
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (user) => {
@@ -69,6 +75,7 @@ const AuthProvider = ({ children }) => {
     setLogedInUser,
     setUserData,
     logout,
+    authLoading,
   };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
