@@ -6,12 +6,15 @@ import FindBlood from "../pages/FindBlood";
 import BecomeDonar from "../pages/BecomeDonar";
 import SignUpPage from "../pages/SignUpPage";
 import LoginPage from "../pages/LoginPage";
+import PrivateRoute from "../providers/PrivateRoute";
+import Error from "../pages/error/Error";
+
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    // errorElement: <p>error</p>,
+    errorElement: <Error/>,
     children: [
       {
         path: "/",
@@ -19,15 +22,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <AboutUs/>,
+        element: <AboutUs />,
       },
       {
         path: "/find_blood",
-        element: <FindBlood/>,
+        element: <FindBlood />,
       },
       {
         path: "/become_donar",
-        element: <BecomeDonar/>,
+        element: (
+          <PrivateRoute>
+            <BecomeDonar />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/signup",
+        element: <SignUpPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
       {
         path: "/signup",
