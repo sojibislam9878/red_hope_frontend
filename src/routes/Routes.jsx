@@ -9,6 +9,7 @@ import LoginPage from "../pages/LoginPage";
 import PrivateRoute from "../providers/PrivateRoute";
 import Error from "../pages/error/Error";
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +43,14 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <SignUpPage/>,
+      },
+      {
+        path: "/login",
+        element: <LoginPage/>,
       },
     ],
   },

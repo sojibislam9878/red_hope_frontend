@@ -14,7 +14,6 @@ const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [logedInUser, setLogedInUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(false);
-
   useEffect(() => {
     const signupUser = async () => {
       if (logedInUser) {
@@ -27,7 +26,6 @@ const AuthProvider = ({ children }) => {
           provider: logedInUser?.providerData[0]?.providerId,
           terms: true,
         };
-
         try {
           const res = await axios.post(
             "http://localhost:3000/social-login",
