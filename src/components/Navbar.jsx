@@ -1,56 +1,19 @@
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { use, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/Red-hope-logo.png";
+import { useTranslation } from "react-i18next";
+import logo_light from "../assets/logo/logo_light.png";
+import logo_dark from "../assets/logo/logo_dark.png";
 import useAuth from "../hooks/useAuth";
+import { usePageConfig } from "../hooks/PageConfigProvider";
 
 const Navbar = () => {
   const { userData, logout } = useAuth();
-  
-  
-  const { i18n } = useTranslation();
+  const { pageConfig, handleTheme, handleLanguageChange } = usePageConfig();
   const normalLink = " lg:text-lg lg:mr-2 mt-2 lg:mt-0";
   const activeLink = `bg-gradient-to-r from-[var(--color-rhprimary)] to-[var(--color-rhsecondary)] border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
 
-  const getSystemTheme = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-
-  const getInitialConfig = () => {
-    const saved = localStorage.getItem("pageConfig");
-    if (saved) return JSON.parse(saved);
-    return {
-      theme: getSystemTheme(),
-      language: "en",
-    };
-  };
-
-  const [pageConfig, setPageConfig] = useState(getInitialConfig);
-
-  useEffect(() => {
-    document.querySelector("html").setAttribute("data-theme", pageConfig.theme);
-    document.querySelector("html").className = pageConfig.theme;
-    i18n.changeLanguage(pageConfig.language);
-    localStorage.setItem("pageConfig", JSON.stringify(pageConfig));
-  }, [pageConfig, i18n]);
-
-  const handleTheme = (e) => {
-    setPageConfig((prev) => ({
-      ...prev,
-      theme: e.target.checked ? "dark" : "light",
-    }));
-  };
-
-  const handleLanguageChange = (lng) => {
-    setPageConfig((prev) => ({
-      ...prev,
-      language: lng,
-    }));
-  };
-
   return (
-    <div className="bg-base-300  shadow-sm">
+    <div className="bg-base-300  shadow-sm fixed w-full z-50">
       <div className="navbar  container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -117,9 +80,17 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a href="/" className="">
-            <img src={logo} alt="Red_hope_logo" className="w-60" />
-          </a>
+          <div>
+            {pageConfig.theme === "light" ? (
+              <a href="/" className="">
+                <img src={logo_light} alt="Red_hope_logo" className="w-60" />
+              </a>
+            ) : (
+              <a href="/" className="">
+                <img src={logo_dark} alt="Red_hope_logo" className="w-60" />
+              </a>
+            )}
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
