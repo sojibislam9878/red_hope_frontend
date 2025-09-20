@@ -6,8 +6,8 @@ import FindBlood from "../pages/FindBlood";
 import BecomeDonar from "../pages/BecomeDonar";
 import SignUpPage from "../pages/SignUpPage";
 import LoginPage from "../pages/LoginPage";
-import PrivateRoute from "../providers/PrivateRoute";
 import Error from "../pages/error/Error";
+import PrivateRoute from "../components/PrivateRoute";
 
 
 export const router = createBrowserRouter([
