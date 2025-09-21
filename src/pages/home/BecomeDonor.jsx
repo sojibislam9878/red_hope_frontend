@@ -9,7 +9,7 @@ const BecomeDonor = () => {
   };
   return (
     <section className="relative py-20 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-rhprimary to-rhsecondary text-white">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+      <div className="container px-4 mx-auto flex flex-col lg:flex-row items-center gap-12">
         {/* Left Side - Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}

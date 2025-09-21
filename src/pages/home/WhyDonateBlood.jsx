@@ -23,7 +23,7 @@ const reasons = [
 const WhyDonateBlood = () => {
   return (
     <section className="relative py-16 px-4 md:px-12 lg:px-20 bg-white dark:bg-secondary-dark">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="container px-4 mx-auto text-center">
         {/* Section Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
