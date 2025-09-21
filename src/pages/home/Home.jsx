@@ -12,14 +12,14 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <WhyDonateBlood/>
-      <FindBlood/>
-      <BecomeDonor/>
-      <HowItWorks/>
-      <Testimonials/>
-      <EventsTimeline/>
-      <FAQ/>
-      <Contact/>
+      <WhyDonateBlood />
+      <FindBlood />
+      <BecomeDonor />
+      <HowItWorks />
+      <Testimonials />
+      <EventsTimeline />
+      <FAQ />
+      <Contact />
     </div>
   );
 };
