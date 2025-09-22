@@ -134,10 +134,11 @@ const Contact = () => {
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.6 }}
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-rhprimary to-rhsecondary text-white rounded-xl font-semibold shadow-lg hover:from-primary-dark hover:to-secondary-dark transition-colors"
+              className="w-full cursor-pointer py-3 lg:py-4 bg-gradient-to-r from-rhprimary to-rhsecondary text-white rounded-xl font-semibold shadow-lg hover:from-primary-dark hover:to-secondary-dark transition-colors duration-200"
             >
               Send Message
             </motion.button>

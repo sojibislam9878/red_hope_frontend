@@ -75,7 +75,7 @@ const WhyDonateBlood = () => {
         whileInView={{ scale: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="absolute -top-10 -right-10 w-32 h-32 bg-rhprimary/20 rounded-full blur-2xl"
+        className="absolute -top-10 right-10 w-32 h-32 bg-rhprimary/20 rounded-full blur-2xl"
       />
     </section>
   );

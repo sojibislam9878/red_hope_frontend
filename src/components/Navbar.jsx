@@ -11,7 +11,8 @@ const Navbar = () => {
   const { pageConfig, handleTheme, handleLanguageChange } = usePageConfig();
   const normalLink = " lg:text-lg lg:mr-2 mt-2 lg:mt-0";
   const activeLink = `bg-gradient-to-r from-[var(--color-rhprimary)] to-[var(--color-rhsecondary)] border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
-
+  console.log(userData);
+  
   return (
     <div className="bg-base-300  shadow-sm fixed w-full z-50">
       <div className="navbar  container mx-auto">

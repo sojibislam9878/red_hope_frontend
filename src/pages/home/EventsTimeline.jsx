@@ -68,7 +68,7 @@ const EventsTimeline = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="mt-4 px-6 py-2 bg-rhprimary text-white rounded-lg font-semibold shadow-md hover:bg-primary-dark transition-colors"
+                    className="mt-4 cursor-pointer px-6 py-2 bg-rhprimary text-white rounded-lg font-semibold shadow-md hover:bg-primary-dark transition-colors"
                   >
                     Register
                   </motion.button>
