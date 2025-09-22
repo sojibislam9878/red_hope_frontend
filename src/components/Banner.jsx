@@ -9,7 +9,7 @@ const Banner = () => {
         <div className="container mx-auto px-4 grid lg:grid-cols-5">
           {/* banner image  */}
           <div className="lg:col-span-3 ">
-            <div className="">
+            <div className="hidden lg:block">
               <svg
                 width="900"
                 height="668"
