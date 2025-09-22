@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Heart, Smile, HandHeart, Droplet } from "lucide-react"; // 👈 icons
-import hero_image from "../assets/red_hope_hero.png";
+import hero_image from "../../assets/red_hope_hero.png";
+import { useTranslation } from "react-i18next";
 
 const Banner = () => {
+  const { t, i18n } = useTranslation();
   const words = ["Hope", "Life", "Future", "Love"];
   const positions = [
     { top: "10%", left: "90%" },
@@ -89,12 +91,10 @@ const Banner = () => {
           className="md:w-1/2 text-center md:text-left"
         >
           <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight text-gray-900 dark:text-white">
-            Donate Blood, Save Life
+            {t("bannerHeader")}
           </h1>
           <p className="mt-6 text-lg text-gray-700 dark:text-gray-300 max-w-xl">
-            Every drop of blood you donate is a gift of life. Join our mission
-            to ensure no one suffers due to blood shortages. Together, we can
-            build a stronger, healthier, and more compassionate community.
+            {t("bannderDes")}
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
