@@ -13,7 +13,7 @@ const testimonials = [
     name: "Sumaiya Akter",
   },
   {
-    quote: "The response time is incredible. Truly a life-saving initiative.",
+    quote: "The response time is incredible. Truly a life-saving initiative part of this cause. Awesome",
     name: "Kamal Uddin",
   },
 ];
@@ -51,7 +51,7 @@ const AboutTestimonials = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-10 text-center relative">
+            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-10 text-center relative mx-2">
               <p className="text-xl italic text-gray-700 dark:text-gray-200">
                 “{t.quote}”
               </p>
