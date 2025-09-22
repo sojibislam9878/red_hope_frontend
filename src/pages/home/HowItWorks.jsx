@@ -77,7 +77,7 @@ const HowItWorks = () => {
         whileInView={{ opacity: 0.15 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="absolute -bottom-12 -right-12 w-40 h-40 bg-rhprimary rounded-full blur-3xl"
+        className="absolute -bottom-12 right-12 w-40 h-40 bg-rhprimary rounded-full blur-3xl"
       />
     </section>
   );

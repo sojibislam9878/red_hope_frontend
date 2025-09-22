@@ -67,9 +67,9 @@ const FindBlood = () => {
 
           {/* Submit Button */}
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full md:w-auto px-8 py-3 rounded-lg bg-rhprimary text-white font-semibold shadow-md hover:bg-primary-dark transition-colors"
+            className="w-full cursor-pointer md:w-auto px-8 py-3 rounded-lg bg-rhprimary text-white font-semibold shadow-md hover:bg-primary-dark transition-colors"
           >
             Request Blood
           </motion.button>
