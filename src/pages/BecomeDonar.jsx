@@ -1,4 +1,5 @@
 import { Helmet } from "@dr.pogodin/react-helmet";
+import EligibilityCriteria from "../components/become-donar/EligibilityCriteria.jsx";
 
 const BecomeDonar = () => {
   return (
@@ -9,9 +10,9 @@ const BecomeDonar = () => {
         <meta charSet="utf-8" />
         <meta name="description" content="Some Component" /> */}
       </Helmet>
-      Become Donar
+      <EligibilityCriteria />
     </div>
   );
-}
+};
 
-export default BecomeDonar
+export default BecomeDonar;
