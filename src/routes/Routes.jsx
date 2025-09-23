@@ -30,9 +30,9 @@ export const router = createBrowserRouter([
       {
         path: "/become_donar",
         element: (
-          <PrivateRoute>
+          // <PrivateRoute>
+          // </PrivateRoute>
             <BecomeDonar />
-          </PrivateRoute>
         ),
       },
       {
