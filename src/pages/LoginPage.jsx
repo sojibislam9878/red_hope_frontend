@@ -5,6 +5,7 @@ import { FaFacebook } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
+import { Helmet } from "@dr.pogodin/react-helmet";
 
 const LoginPage = () => {
   const { googleSignUP, facebookSingUP, setUserData } = useAuth();
@@ -30,6 +31,12 @@ const LoginPage = () => {
       bg-gradient-to-br from-blue-100 via-purple-200 to-pink-200 
       dark:from-blue-900 dark:via-purple-900 dark:to-pink-950"
     >
+      <Helmet>
+        <title>Red Hope || Login</title>
+        {/* <link rel="canonical" href="http://mysite.com/example" />
+        <meta charSet="utf-8" />
+        <meta name="description" content="Some Component" /> */}
+      </Helmet>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white/90 dark:bg-gray-900/80 backdrop-blur-md shadow-2xl rounded-2xl p-8 w-full max-w-md space-y-6"

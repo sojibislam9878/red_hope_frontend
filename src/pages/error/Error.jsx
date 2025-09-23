@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
