@@ -1,6 +1,4 @@
-import { use, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import logo_light from "../assets/logo/logo_light.png";
 import logo_dark from "../assets/logo/logo_dark.png";
 import useAuth from "../hooks/useAuth";
@@ -137,7 +135,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end flex gap-2 justify-center items-center">
+        <div className="navbar-end flex gap-2 justify-right items-center">
           <select
             onChange={(e) => handleLanguageChange(e.target.value)}
             defaultValue={pageConfig.language}
