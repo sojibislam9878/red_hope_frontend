@@ -12,7 +12,7 @@ const Navbar = () => {
   const normalLink = " lg:text-lg lg:mr-2 mt-2 lg:mt-0";
   const activeLink = `bg-gradient-to-r from-[var(--color-rhprimary)] to-[var(--color-rhsecondary)] border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
   console.log(userData);
-  
+
   return (
     <div className="bg-base-300  shadow-sm fixed w-full z-50">
       <div className="navbar  container mx-auto">
@@ -61,7 +61,7 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to="find_blood"
+                  to="find-blood"
                   className={({ isActive }) =>
                     isActive ? activeLink : normalLink
                   }
@@ -71,12 +71,12 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to="become_donar"
+                  to="become-donor"
                   className={({ isActive }) =>
                     isActive ? activeLink : normalLink
                   }
                 >
-                  Become Donar
+                  Become Donor
                 </NavLink>
               </li>
             </ul>
@@ -117,7 +117,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="find_blood"
+                to="find-blood"
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
@@ -127,12 +127,12 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="become_donar"
+                to="become-donor"
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
               >
-                Become Donar
+                Become Donor
               </NavLink>
             </li>
           </ul>
@@ -161,7 +161,7 @@ const Navbar = () => {
 
             {/* sun icon */}
             <svg
-              className="swap-off h-8 w-8 fill-current"
+              className="swap-on h-8 w-8 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -170,7 +170,7 @@ const Navbar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-on h-8 w-8 fill-current"
+              className="swap-off h-8 w-8 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >

@@ -24,11 +24,11 @@ export const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/find_blood",
+        path: "/find-blood",
         element: <FindBlood />,
       },
       {
-        path: "/become_donar",
+        path: "/become-donor",
         element: (
           // <PrivateRoute>
           // </PrivateRoute>
